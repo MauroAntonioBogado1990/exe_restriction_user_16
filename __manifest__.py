@@ -1,5 +1,5 @@
 {
-    'name': 'Exe Restricción por usuario version 16',
+    'name': 'Exe Restricción por usuario',
     'version': '16.0',
     'category': 'Tools',
     'author':'Mauro Bogado,Exemax',

@@ -6,7 +6,7 @@ class StockPickingType(models.Model):
     _inherit = 'stock.picking.type'
 
     def search(self, args, **kwargs):
-        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+        if self.env.user.has_group('exe_restriction_user.group_no_permission'):
             raise AccessError("No tenés permiso para ver Inventario.")
         return super().search(args, **kwargs)
 
@@ -15,7 +15,7 @@ class MrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     def search(self, args, **kwargs):
-        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+        if self.env.user.has_group('exe_restriction_user.group_no_permission'):
             raise AccessError("No tenés permiso para ver Fabricación.")
         return super().search(args, **kwargs)
 
@@ -24,7 +24,7 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
     def search(self, args, **kwargs):
-        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+        if self.env.user.has_group('exe_restriction_user.group_no_permission'):
             raise AccessError("No tenés permiso para ver Empleados.")
         return super().search(args, **kwargs)
 
@@ -33,7 +33,7 @@ class Website(models.Model):
     _inherit = 'website'
 
     def search(self, args, **kwargs):
-        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+        if self.env.user.has_group('exe_restriction_user.group_no_permission'):
             # Mostrar solo el sitio web principal (o ninguno si querés ocultar todo)
             args = [('id', '=', -1)] + args  # dominio siempre falso
         return super().search(args, **kwargs)
@@ -44,7 +44,7 @@ class Board(models.AbstractModel):
     _inherit = 'board.board'
 
     def _is_restricted_user(self):
-        return self.env.user.has_group('exe_restriction_user_16.group_no_permission')
+        return self.env.user.has_group('exe_restriction_user.group_no_permission')
 
     def search(self, args=None, **kwargs):
         if self._is_restricted_user():
@@ -84,7 +84,7 @@ class IrModuleModule(models.Model):
 
     def _is_restricted(self):
         return (
-            self.env.user.has_group('exe_restriction_user_16.group_no_permission')
+            self.env.user.has_group('exe_restriction_user.group_no_permission')
             and not self.env.context.get('frontend_asset_loading')
             and not self.env.context.get('website_id')
             and not self.env.is_superuser
@@ -96,7 +96,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     def search(self, args, **kwargs):
-        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+        if self.env.user.has_group('exe_restriction_user.group_no_permission'):
             # Mostrar solo los presupuestos creados por el usuario actual
             domain = [('create_uid', '=', self.env.uid)]
             args = domain + args
