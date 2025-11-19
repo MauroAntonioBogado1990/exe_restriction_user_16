@@ -1,0 +1,27 @@
+<odoo>
+  <data>
+
+    <!-- Vista alternativa para usuarios restringidos -->
+    <record id="view_board_restricted_message" model="ir.ui.view">
+      <field name="name">board.restricted.message</field>
+      <field name="model">board.board</field>
+      <field name="priority">100</field>
+      <field name="groups_id" eval="[(4, ref('exe_restriction_user_16.group_no_permission'))]"/>
+      <field name="arch" type="xml">
+        <form string="Tableros">
+          <sheet>
+            <div class="oe_title">
+              <h1>Acceso restringido</h1>
+            </div>
+            <div>
+              <p>No tenés permiso para ver los tableros.</p>
+              <p>Contactá al administrador si necesitás acceso.</p>
+              <img src="/web/image?model=res.company&amp;field=logo&amp;id=1" alt="Logo" style="max-width: 200px; margin-top: 20px;"/>
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  </data>
+</odoo>

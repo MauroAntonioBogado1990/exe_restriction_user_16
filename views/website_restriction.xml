@@ -1,0 +1,40 @@
+<odoo>
+    <data noupdate="0">
+
+        <!-- 
+        ACCIÓN CORREGIDA Y ROBUSTA: Sobreescribir la lista de grupos permitidos (groups_id) 
+        para el menú de la aplicación "Sitio Web" (website.menu_website_configuration).
+        
+        El comando (6, 0, [ID]) reemplaza la lista de grupos actuales con la nueva lista.
+        Al dejar solo 'base.group_system' (Administrador), aseguramos que el grupo 
+        'Usuarios sin permisos' NO tenga acceso a este menú.
+        -->
+        <!-- Menú principal del sitio web -->
+<!-- Usar xpath para modificar el menú del sitio web -->
+
+    <!-- Ocultar menú de Sitio Web para usuarios sin permisos -->
+    <record id="website.menu_website_configuration" model="ir.ui.menu">
+      <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
+    </record>
+
+
+
+
+
+    <!-- Ocultar menú "Mi tablero" para todos excepto administradores -->
+    <record id="board.menu_board_my_dash" model="ir.ui.menu">
+      <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
+    </record>
+
+<!-- Acción del sitio web -->
+<!-- <record id="website.action_website" model="ir.actions.act_url">
+    <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
+</record>
+
+<record id="board.board_action" model="ir.actions.act_window">
+    <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
+</record> -->
+
+        
+    </data>
+</odoo>
