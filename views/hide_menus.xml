@@ -1,0 +1,11 @@
+
+<odoo>
+  <data noupdate="1">
+    <!-- Ocultar menú del Website para usuarios que no deberían verlo -->
+    <record id="website.menu_site" model="ir.ui.menu">
+      <field name="groups_id" eval="[(6, 0, [ref('base.group_system')])]"/>
+    </record>
+
+    <!-- También se puede restringir otros menús aquí si es necesario -->
+  </data>
+</odoo>
