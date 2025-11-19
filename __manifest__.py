@@ -10,6 +10,7 @@
     #'security/ir.model.access.csv',
     'security/record_rules.xml',
     'views/hide_menus.xml',
+    #'views/website_restriction.xml',
     # 'views/hide_board_menu.xml' removed because it attempted to update a menu
     # that may not exist in all installations and caused ParseError on upgrade.
     ],
