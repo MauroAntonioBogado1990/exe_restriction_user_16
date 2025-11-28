@@ -16,7 +16,7 @@
             <div>
               <p>No tenés permiso para ver los tableros.</p>
               <p>Contactá al administrador si necesitás acceso.</p>
-              <img src="/web/image?model=res.company&amp;field=logo&amp;id=1" alt="Logo" style="max-width: 200px; margin-top: 20px;"/>
+              
             </div>
           </sheet>
         </form>

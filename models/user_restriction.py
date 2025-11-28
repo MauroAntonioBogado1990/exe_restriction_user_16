@@ -133,3 +133,61 @@ class SaleOrder(models.Model):
             domain = [('create_uid', '=', self.env.uid)]
             args = domain + args
         return super().search(args, **kwargs)
+    
+# CRM - Oportunidades
+class CrmLead(models.Model):
+    _inherit = 'crm.lead'
+
+    def search(self, args, **kwargs):
+        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+            raise AccessError("No tenés permiso para ver Oportunidades.")
+        return super().search(args, **kwargs)
+
+    def read(self, fields=None, load='_classic_read'):
+        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+            raise AccessError("No tenés permiso para ver Oportunidades.")
+        return super().read(fields, load)
+
+    def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
+        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+            raise AccessError("No tenés permiso para ver Oportunidades.")
+        return super().read_group(domain, fields, groupby, offset, limit, orderby, lazy)
+
+# Contactos
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    def search(self, args, **kwargs):
+        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+            raise AccessError("No tenés permiso para ver Contactos.")
+        return super().search(args, **kwargs)
+
+    def read(self, fields=None, load='_classic_read'):
+        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+            raise AccessError("No tenés permiso para ver Contactos.")
+        return super().read(fields, load)
+
+    def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
+        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+            raise AccessError("No tenés permiso para ver Contactos.")
+        return super().read_group(domain, fields, groupby, offset, limit, orderby, lazy)
+
+# Calendario - Eventos
+class CalendarEvent(models.Model):
+    _inherit = 'calendar.event'
+
+    def search(self, args, **kwargs):
+        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+            raise AccessError("No tenés permiso para ver Eventos del calendario.")
+        return super().search(args, **kwargs)
+
+    def read(self, fields=None, load='_classic_read'):
+        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+            raise AccessError("No tenés permiso para ver Eventos del calendario.")
+        return super().read(fields, load)
+
+    def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
+        if self.env.user.has_group('exe_restriction_user_16.group_no_permission'):
+            raise AccessError("No tenés permiso para ver Eventos del calendario.")
+        return super().read_group(domain, fields, groupby, offset, limit, orderby, lazy)
+

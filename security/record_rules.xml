@@ -3,7 +3,7 @@
     <record id="ir_module_module_restrict_rule" model="ir.rule">
       <field name="name">Restringir acceso a Aplicaciones</field>
       <field name="model_id" ref="base.model_ir_module_module"/>
-      <field name="groups" eval="[(4, ref('exe_restriction_user.group_no_permission'))]"/>
+      <field name="groups" eval="[(4, ref('exe_restriction_user_16.group_no_permission'))]"/>
       <field name="domain_force">[('id', '=', -1)]</field>
       <field name="perm_read" eval="True"/>
       <field name="perm_write" eval="False"/>
@@ -13,7 +13,7 @@
     <record id="board_board_restrict_rule" model="ir.rule">
       <field name="name">Restringir acceso a Tableros</field>
       <field name="model_id" ref="board.model_board_board"/>
-      <field name="groups" eval="[(4, ref('exe_restriction_user.group_no_permission'))]"/>
+      <field name="groups" eval="[(4, ref('exe_restriction_user_16.group_no_permission'))]"/>
       <field name="domain_force">[('id','=',False)]</field>
       <field name="perm_read" eval="True"/>
       <field name="perm_write" eval="False"/>
@@ -35,6 +35,12 @@
       <field name="groups" eval="[(4, ref('exe_restriction_user.group_no_permission'))]"/>
       <field name="domain_force">[(0, '=', 1)]</field>
     </record> -->
+      <record id="board.menu_board_my_dash" model="ir.ui.menu">
+            <field name="groups_id" eval="[(3, ref('exe_restriction_user_16.group_restricted_user'))]"/>
+        </record>
 
+        <!-- <record id="website.menu_website_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(3, ref('exe_restriction_user_16.group_restricted_user'))]"/>
+        </record> -->
   </data>
 </odoo>
